@@ -5,7 +5,7 @@ require 'json'
 module Populate
   def self.banks
     http = Net::HTTP.new('raw.githubusercontent.com', 443); http.use_ssl = true
-    JSON.parse http.get('/devisaah/populate_bancos/master/banks.json').body
+    JSON.parse http.get('/devisaah/RoRBancos/master/banks.json').body
   end
 
 
