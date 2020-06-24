@@ -1,0 +1,35 @@
+== Código Rails para Popular Bancos
+
+É um código simples mas chato de se fazer. O que eu fiz foi só organizar um código (pra ser usado em um seed do Rails) pra popular a tabela de bancos.
+
+Quem achar algum erro de português ou banco faltando, por favor me sinalize para que outras pessoas possam ter acesso ao arquivo corrigido.
+
+== Uso
+
+Simplesmente copie o conteúdo do arquivo "populate.rb" e cole no seed.rb (ou em outro arquivo) de sua aplicação. Uma outra sugestão é incluir em um arquivo thor na pasta /lib/tasks do seu projeto Rails.
+
+Eu estou usando a tabela de Banco com a seguinte estrutura:
+  _____________________                                        
+ |       Banks         |                  
+ |-------------------- |  
+ | description:string  |
+ | code: string        |                              
+  ---------------------               
+
+O loop de inserção dos bancos está bem curtinho, então caso sua estrutura seja diferente da minha, é fácil alterar.
+
+
+    banks.each do |bank|
+      Bank.create(
+        description: bank['Name'], 
+        code: bank['Code']
+      ) 
+      puts "Adding bank #{bank['name']}"
+    end
+
+
+== Referências
+
+Eu achei a lista dos bancos desse arquivo .json: "https://raw.githubusercontent.com/guibranco/BancosBrasileiros/master/bancos.json" 
+
+No projeto contém os models e as migrations de exemplo para criação das tabelas e uso do código. Lembre de alterar o timestamp das migrations.
